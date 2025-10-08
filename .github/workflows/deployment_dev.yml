@@ -16,7 +16,7 @@ jobs:
       name: develop  # ← debe coincidir con el nombre del environment que creaste
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Dummy step
         run: echo "✅ Pipeline ejecutado correctamente (aún sin código)"
