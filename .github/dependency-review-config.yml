@@ -1,0 +1,18 @@
+# Severidades que causarán que falle el check
+fail_on_severity: 'critical'
+
+# Licencias permitidas
+allow_licenses:
+  - 'MIT'
+  - 'Apache-2.0'
+  - 'BSD-2-Clause'
+  - 'BSD-3-Clause'
+  - 'ISC'
+  - 'GPL-3.0'
+  - 'Unlicense'
+  - 'LicenseRef-scancode-generic-cla'
+  - 'LGPL-2.1-or-later'
+
+# Configuración para Python/pip
+pip:
+  manifest_path: "requirements.txt"
