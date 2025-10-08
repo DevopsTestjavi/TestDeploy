@@ -1,0 +1,49 @@
+# Configuración de Dependabot para actualizaciones automáticas de seguridad
+# Más información: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Configuración para dependencias de Python
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "16:00"
+      timezone: "America/Mexico_City"
+    # Crear PRs solo para actualizaciones de seguridad
+    open-pull-requests-limit: 10
+    # Configuración de commits
+    commit-message:
+      prefix: "security"
+      prefix-development: "deps"
+      include: "scope"
+    # Etiquetas para los PRs
+    labels:
+      - "dependencies"
+      - "security"
+    # Configuración de versioning
+    versioning-strategy: "increase"
+    # Agrupar actualizaciones relacionadas
+    groups:
+      security-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+
+  # Configuración para GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "16:00"
+      timezone: "America/Mexico_City"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "github-actions"
+      - "dependencies"
