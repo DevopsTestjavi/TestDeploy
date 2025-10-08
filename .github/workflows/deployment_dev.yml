@@ -1,0 +1,26 @@
+# .github/workflows/ci-dummy.yml
+
+name: Dummy CI Check Development
+
+on:
+  workflow_dispatch:  # para lanzarlo manualmente
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  dummy-job:
+    runs-on: ubuntu-latest
+    environment:
+      name: develop  # ← debe coincidir con el nombre del environment que creaste
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Dummy step
+        run: echo "✅ Pipeline ejecutado correctamente (aún sin código)"
+
+      - name: Print environment variable
+        run: echo "El valor de MY_ENV_VAR es:" ${{ vars.MY_ENV_VAR }}
+
